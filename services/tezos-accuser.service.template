@@ -1,0 +1,18 @@
+# The Tezos Accuser service (part of systemd)
+# file: /etc/systemd/system/tezos-node.service 
+
+[Unit]
+Description       = Tezos Accuser Service
+Documentation     = http://tezos.gitlab.io/betanet/
+Wants             = network-online.target
+After             = network-online.target 
+
+[Service]
+User              = $USER
+Group		          = $USER
+WorkingDirectory  = /home/$USER/
+ExecStart       	= /opt/tezos/tezos-accuser-$PROTO run
+Restart           = on-failure
+
+[Install]
+WantedBy	= multi-user.target
