@@ -2,7 +2,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-source ./download_tezos.sh
+source ./utils/utils.sh
+source ./utils/download_tezos.sh
 
 ## requires:
 ## rename, wget, curl
@@ -25,13 +26,14 @@ if [ ! -f "$DATA_DIR/step1" ]; then
     # sudo reboot
 fi
 
-download_tezos $DATA_DIR
+download_tezos "$DATA_DIR"
 
 ## configure tezos
 
+proto=$(get_protocol $DATA_DIR)
 
 # 5. create services
-
+# create_services
 
 # 6. fetch and apply udev rules
 
