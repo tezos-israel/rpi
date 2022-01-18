@@ -5,6 +5,7 @@ IFS=$'\n\t'
 source ./utils/utils.sh
 source ./utils/download_tezos.sh
 source ./utils/create_services.sh
+source ./utils/udev.sh
 
 ## requires:
 ## rename, wget, curl
@@ -50,6 +51,14 @@ baker=${baker:-"baker"}
 
 create_service_files $DATA_DIR "$user" "$baker" "$proto"
 
-# 6. fetch and apply udev rules
+# move_binaries_to_path
+# start node service
+#
 
+apply_udev "$DATA_DIR"
+
+echo "Please connect ledger and open the baking app, press [Enter] to continue..."
+read -r
+
+import_baker
 # 7.
