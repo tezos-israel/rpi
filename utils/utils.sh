@@ -5,7 +5,7 @@ function get_protocol() {
     
     BINARIES_DIR="$DATA_DIR/binaries"
     
-    cd "$BINARIES_DIR" || exit
+    cd "$BINARIES_DIR" || exit 1
     
     bk_binaries=$(find . -type f -iname "tezos-baker-*" | sort)
     
