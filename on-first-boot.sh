@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 SCRIPT_DIR=$(dirname "$0")
-
+DATA_DIR=$(readlink -f "./out")
 
 
 source "$SCRIPT_DIR"/utils/utils.sh
@@ -12,7 +12,6 @@ source "$SCRIPT_DIR"/utils/create_services.sh
 source "$SCRIPT_DIR"/utils/udev.sh
 
 
-DATA_DIR=$(readlink -f "./out")
 
 mkdir -p "$DATA_DIR"
 
@@ -48,8 +47,21 @@ fi
 
 
 if [ ! -d "$DATA_DIR/binaries" ]; then
-    download_tezos "$DATA_DIR"
+    version="latest"
+    download_tezos "$DATA_DIR" "$version"
 fi
+
+# move_binaries_to_path
+sudo mkdir -p /opt/tezos
+sudo cp "$DATA_DIR"/binaries/* /opt/tezos
+
+echo PATH="\$PATH:/opt/tezos" >> "$HOME"/.bashrc
+PATH=$PATH:/opt/tezos
+
+# download zcash params
+wget -O "$DATA_DIR"/fetch-zcash-params.sh https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh
+chmod +x "$DATA_DIR"/fetch-zcash-params.sh
+"$DATA_DIR"/fetch-zcash-params.sh
 
 ## configure tezos
 
@@ -68,22 +80,19 @@ echo "What's is your baker alias (default: baker)"
 read -r baker
 baker=${baker:-"baker"}
 
-# download zcash params
-wget -O "$DATA_DIR"/fetch-zcash-params.sh https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh
-chmod +x "$DATA_DIR"/fetch-zcash-params.sh
-"$DATA_DIR"/fetch-zcash-params.sh
+
 
 create_service_files "$DATA_DIR" "$user" "$baker" "$proto"
-
-# move_binaries_to_path
-sudo mkdir -p /opt/tezos
-sudo cp "$DATA_DIR"/binaries/* /opt/tezos
-
 
 # move services to system dir
 sudo mv "$DATA_DIR"/services/* /etc/systemd/system/
 
-## TODO import snapshot
+sudo systemctl daemon-reload
+
+tezos-node config --network hangzhounet init
+
+# import snapshot
+. "$SCRIPT_DIR"/utils/import_snapshot.sh
 
 # start node service
 sudo systemctl enable tezos-node
