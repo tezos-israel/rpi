@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
     vb.memory = "16384"
   end
 
-  config.disksize.size = '10GB'
+  config.disksize.size = '20GB'
 
   #
   # View the documentation for the provider you are using for more
