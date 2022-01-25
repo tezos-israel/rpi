@@ -7,25 +7,27 @@ DATA_DIR=$(readlink -f "./out")
 
 
 source "$SCRIPT_DIR"/utils/utils.sh
+source "$SCRIPT_DIR"/utils/step_utils.sh
 source "$SCRIPT_DIR"/utils/download_tezos.sh
 source "$SCRIPT_DIR"/utils/create_services.sh
 source "$SCRIPT_DIR"/utils/udev.sh
 
-source "$SCRIPT_DIR"/steps/step1.sh
-source "$SCRIPT_DIR"/steps/step2.sh
-source "$SCRIPT_DIR"/steps/step3.sh
-source "$SCRIPT_DIR"/steps/step4.sh
-source "$SCRIPT_DIR"/steps/step5.sh
-source "$SCRIPT_DIR"/steps/step6.sh
+source "$SCRIPT_DIR"/steps/1-update-machine.sh
+source "$SCRIPT_DIR"/steps/2-check-deps.sh
+source "$SCRIPT_DIR"/steps/3-install-tezos.sh
+source "$SCRIPT_DIR"/steps/4-setup-services.sh
+source "$SCRIPT_DIR"/steps/5-import-snapshot.sh
+source "$SCRIPT_DIR"/steps/6-start-node.sh
 
 mkdir -p "$DATA_DIR"
 
-step "1" step1_cmd
-step "2" step2_cmd
-step "3" step3_cmd
-step "4" step4_cmd
-step "5" step5_cmd
-step "6" step6_cmd
+step=1
+step step1_cmd
+step step2_cmd
+step step3_cmd
+step step4_cmd
+step step5_cmd
+step step6_cmd
 
 
 

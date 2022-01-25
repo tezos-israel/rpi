@@ -25,9 +25,6 @@ function download() {
     wget -O "$BINARIES_TAR" "https://github.com/$github_repo/releases/download/v$version/binaries-$version$arch_suffix.tar.gz"
 }
 
-
-
-
 function download_tezos() {
     echo "downloading tezos"
 

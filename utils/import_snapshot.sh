@@ -21,6 +21,3 @@ rm -rf "$HOME"/.tezos-node/{context,store,lock} || true
 
 printf "\nimporting snapshot\n"
 tezos-node snapshot import "$SNAPSHOT_PATH"
-
-printf "\nstarting node\n"
-sudo systemctl start tezos-node

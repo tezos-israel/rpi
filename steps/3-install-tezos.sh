@@ -10,8 +10,8 @@ function step3_cmd(){
     sudo mkdir -p /opt/tezos
     sudo cp "$DATA_DIR"/binaries/* /opt/tezos
     
-    echo PATH="\$PATH:/opt/tezos" >> "$HOME"/.bashrc
-    PATH=$PATH:/opt/tezos
+    echo PATH="export \$PATH:/opt/tezos" >> "$HOME"/.bashrc
+    export PATH=$PATH:/opt/tezos
     
     # download zcash params
     wget -O "$DATA_DIR"/fetch-zcash-params.sh https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh
