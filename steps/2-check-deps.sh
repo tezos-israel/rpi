@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function step2_cmd() {
+function check_deps() {
     echo "Checking dependencies... "
     deps=""
     while read -r name

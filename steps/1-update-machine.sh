@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-function step1_cmd() {
-    # 1. update machine
+function update_machine() {
     sudo apt update
     sudo apt full-upgrade -y
     

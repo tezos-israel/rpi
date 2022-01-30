@@ -3,7 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-TESTNET_URL=https://d1u3sv5wkszf4p.cloudfront.net/hangzhounet-rolling-tezos
+TESTNET_URL=https://hangzhounet.xtz-shots.io/rolling
 # MAINNET_URL=https://mainnet.xtz-shots.io/rolling
 
 SNAPSHOT_URL=$TESTNET_URL
