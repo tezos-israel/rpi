@@ -9,7 +9,6 @@ DATA_DIR=$(readlink -f "./out")
 source "$SCRIPT_DIR"/utils/utils.sh
 source "$SCRIPT_DIR"/utils/step_utils.sh
 source "$SCRIPT_DIR"/utils/download_tezos.sh
-source "$SCRIPT_DIR"/utils/create_services.sh
 source "$SCRIPT_DIR"/utils/udev.sh
 
 source "$SCRIPT_DIR"/steps/1-update-machine.sh
@@ -29,7 +28,7 @@ step=1
 step update_machine
 step check_deps
 step step3_cmd
-step step4_cmd
+step create_tezos_services
 step step5_cmd
 step step6_cmd
 

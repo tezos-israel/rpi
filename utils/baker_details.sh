@@ -1,11 +1,5 @@
 #!/bin/bash
 
-proto=$(get_protocol "$DATA_DIR")
-
-if [ -z "$proto" ]; then
-    echo "protocol is missing"
-    exit 1
-fi
 
 echo "What's is the user name that runs tezos (default: $USER)"
 read -r user
