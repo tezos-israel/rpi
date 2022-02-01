@@ -3,6 +3,8 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+DATA_DIR=${1:-$DATA_DIR}
+
 TESTNET_URL=https://hangzhounet.xtz-shots.io/rolling
 # MAINNET_URL=https://mainnet.xtz-shots.io/rolling
 
