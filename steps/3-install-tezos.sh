@@ -10,7 +10,7 @@ function step3_cmd(){
     sudo mkdir -p /opt/tezos
     sudo cp "$DATA_DIR"/binaries/* /opt/tezos
     
-    echo "export \"PATH=\$PATH:/opt/tezos\"" >> "$HOME"/.bashrc
+    echo "export PATH=\"\$PATH:/opt/tezos\"" >> "$HOME"/.bashrc
     export PATH=$PATH:/opt/tezos
     
     # download zcash params
