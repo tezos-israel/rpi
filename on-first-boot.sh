@@ -23,14 +23,21 @@ mkdir -p "$DATA_DIR"
 
 source "$SCRIPT_DIR"/utils/baker_details.sh
 
-step=1
+step=0
 
-step update_machine
-step check_deps
-step step3_cmd
-step create_tezos_services
-step step5_cmd
-step step6_cmd
+inc_step
+step update_machine $step
+inc_step
+step check_deps $step
+inc_step
+step install_tezos $step
+inc_step
+step create_tezos_services $step
+inc_step
+step import_snapshot $step
+inc_step
+step start_node $step
+
 
 echo "Please import your baker, press [Enter] to continue..."
 read -r

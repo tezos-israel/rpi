@@ -19,7 +19,7 @@ function finish_step() {
 
 function step() {
     local cmd=$1
-    
+    local step=$2
     if [ -z "$cmd" ]; then
         echo "missing command for step $step"
         exit 1
@@ -29,7 +29,6 @@ function step() {
     start_step "$step"
     
     if [ "$skip" = "1" ]; then
-        step=$((step+1))
         return 0
     fi
     
@@ -40,6 +39,9 @@ function step() {
     fi
     
     finish_step "$step"
+}
+
+function inc_step() {
     step=$((step+1))
 }
 

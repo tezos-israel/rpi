@@ -1,5 +1,5 @@
 #!/bin/bash
 
-function step5_cmd() {
+function import_snapshot() {
     . "$SCRIPT_DIR"/utils/import_snapshot.sh
 }
