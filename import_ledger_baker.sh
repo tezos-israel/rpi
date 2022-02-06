@@ -3,6 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 
+source ./utils/utils.sh
 source ./utils/step_utils.sh
 
 DATA_DIR=./out
@@ -13,7 +14,7 @@ function apply_udev() {
     chmod +x "$FILENAME"
     sudo $FILENAME
     
-    sudo reboot
+    restart_machine
 }
 
 function import_baker() {

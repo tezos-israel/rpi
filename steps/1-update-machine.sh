@@ -6,9 +6,7 @@ function update_machine() {
     
     touch "$DATA_DIR/step1"
     
-    echo "Press [Enter] key to reboot..., rerun $0 after reboot"
-    read -r
-    
-    sudo reboot
+    echo "rerun $0 after reboot"
+    restart_machine
 }
 
