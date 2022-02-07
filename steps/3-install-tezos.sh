@@ -18,7 +18,7 @@ function install_tezos(){
     chmod +x "$DATA_DIR"/fetch-zcash-params.sh
     "$DATA_DIR"/fetch-zcash-params.sh
     
-    tezos-node config --network hangzhounet --rpc-addr "[::]:8732" init
+    tezos-node config --network hangzhounet --rpc-addr "localhost:8732" init
     
     tezos-node identity generate
 }
