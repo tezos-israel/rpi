@@ -25,7 +25,7 @@ source "$SCRIPT_DIR"/utils/baker_details.sh
 step=0
 
 inc_step
-step update_machine $step
+step update_machine $step restart_machine
 inc_step
 step check_deps $step
 inc_step

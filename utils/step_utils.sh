@@ -39,6 +39,11 @@ function step() {
     fi
     
     finish_step "$step"
+
+    local after_finish_cmd=$3
+    if [ -n "$after_finish_cmd" ]; then
+        $after_finish_cmd
+    fi
 }
 
 function inc_step() {
