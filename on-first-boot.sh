@@ -24,18 +24,18 @@ source "$SCRIPT_DIR"/utils/baker_details.sh
 
 step=0
 
-inc_step
-step update_machine $step restart_machine
-inc_step
-step check_deps $step
-inc_step
-step install_tezos $step
-inc_step
-step create_tezos_services $step
-inc_step
-step import_snapshot $step
-inc_step
-step start_node $step
+
+num_step update_machine restart_machine
+
+num_step check_deps
+
+num_step install_tezos
+
+num_step create_tezos_services
+
+num_step import_snapshot
+
+num_step start_node
 
 
 echo "Please import your baker, press [Enter] to continue..."
@@ -49,7 +49,7 @@ if [ "$register" = "y" ] || [ "$register" = "Y" ]; then
     tezos-client register key "$baker" as delegate
 fi
 
-step start_baker_binaries
+num_step start_baker_binaries
 
 
 ## ledger specifc

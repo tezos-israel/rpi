@@ -40,7 +40,7 @@ function step() {
     
     finish_step "$step"
 
-    local after_finish_cmd=$3
+    local after_finish_cmd=${3:-""}
     if [ -n "$after_finish_cmd" ]; then
         $after_finish_cmd
     fi
@@ -48,6 +48,12 @@ function step() {
 
 function inc_step() {
     step=$((step+1))
+}
+
+function num_step() {
+    inc_step
+    
+    step "$1" "$step" "${2:-""}"
 }
 
 function noop() {
