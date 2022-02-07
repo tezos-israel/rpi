@@ -16,6 +16,7 @@ source "$SCRIPT_DIR"/steps/3-install-tezos.sh
 source "$SCRIPT_DIR"/steps/4-setup-services.sh
 source "$SCRIPT_DIR"/steps/5-import-snapshot.sh
 source "$SCRIPT_DIR"/steps/6-start-node.sh
+source "$SCRIPT_DIR"/steps/register-baker.sh
 source "$SCRIPT_DIR"/steps/7-start_baker_binaries.sh
 
 mkdir -p "$DATA_DIR"
@@ -41,13 +42,7 @@ num_step start_node
 echo "Please import your baker, press [Enter] to continue..."
 read -r
 
-echo "Do you want to register your baker? [y/N]"
-read -r register
-register=${register:-"N"}
-
-if [ "$register" = "y" ] || [ "$register" = "Y" ]; then
-    tezos-client register key "$baker" as delegate
-fi
+num_step register_baker
 
 num_step start_baker_binaries
 
