@@ -2,6 +2,6 @@
 
 function start_baker_binaries() {
     sudo systemctl start tezos-{baker,endorser,accuser}
-    wait 10
+    sleep 10
     sudo systemctl is-active --quiet tezos-{baker,endorser,accuser}
 }
