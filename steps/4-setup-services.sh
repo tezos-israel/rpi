@@ -47,8 +47,10 @@ function create_service_files(){
 
 
 function create_tezos_services() {
+    echo "creating files"
     create_service_files "$DATA_DIR" "$user" "$baker"
     
+    echo "moving files to system"
     # move services to system dir
     sudo mv "$DATA_DIR"/services/* /etc/systemd/system/
     
