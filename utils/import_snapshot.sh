@@ -3,6 +3,11 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+if ! [  -x "$(command -v "tezos-node")" ] ; then
+    echo "tezos-node was not found"
+    exit 1
+fi
+
 DATA_DIR=${1:-$DATA_DIR}
 
 TESTNET_URL=https://hangzhounet.xtz-shots.io/rolling
@@ -12,8 +17,10 @@ SNAPSHOT_URL=$TESTNET_URL
 
 SNAPSHOT_PATH="$DATA_DIR"/snapshot.rolling
 
-printf "\ndownloading latest snapshot\n"
-wget $SNAPSHOT_URL -O "$SNAPSHOT_PATH"
+if [ "$(find $SNAPSHOT_PATH -mmin +10)" ] || [ "${FORCE_DOWNLOAD_SNAPSHOT+0}" == "1" ]; then
+    printf "\ndownloading latest snapshot\n"
+    wget $SNAPSHOT_URL -O "$SNAPSHOT_PATH"
+fi
 
 printf "\nstopping node\n"
 sudo systemctl stop tezos-node
