@@ -17,7 +17,7 @@ SNAPSHOT_URL=$TESTNET_URL
 
 SNAPSHOT_PATH="$DATA_DIR"/snapshot.rolling
 
-if [ "$(find $SNAPSHOT_PATH -mmin +10)" ] || [ "${FORCE_DOWNLOAD_SNAPSHOT+0}" == "1" ]; then
+if [ ! -f "$SNAPSHOT_PATH" ] || [ "$(find "$SNAPSHOT_PATH" -mmin +60)" ] || [ "${FORCE_DOWNLOAD_SNAPSHOT+0}" == "1" ]; then
     printf "\ndownloading latest snapshot\n"
     wget $SNAPSHOT_URL -O "$SNAPSHOT_PATH"
 fi
