@@ -2,6 +2,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+if [[ -n $DEBUG ]]; then
+  set -x
+fi
+
 SCRIPT_DIR=$(dirname "$0")
 DATA_DIR=$(readlink -f "./out")
 
