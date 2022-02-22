@@ -1,6 +1,8 @@
 #!/bin/bash
 
 function update_machine() {
+    git pull
+    
     sudo apt update
     sudo apt full-upgrade -y
     
