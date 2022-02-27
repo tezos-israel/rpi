@@ -14,4 +14,4 @@ fi
 
 account=$1
 
-tezos-client activate account "$baker" with "./$account.json"
+/opt/tezostezos-client activate account "$baker" with "./$account.json"
