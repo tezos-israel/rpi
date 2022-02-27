@@ -14,7 +14,7 @@ function install_tezos(){
     export PATH=$PATH:/opt/tezos
     source "$HOME"/.bashrc
     
-    msg "run: source $HOME/.bashrc"
+    echo "run: source $HOME/.bashrc"
     
     # download zcash params
     wget -O "$DATA_DIR"/fetch-zcash-params.sh https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh
