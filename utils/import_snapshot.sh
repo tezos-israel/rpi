@@ -29,4 +29,4 @@ printf "\nclearing data\n"
 rm -rf "$HOME"/.tezos-node/{context,store,lock} || true
 
 printf "\nimporting snapshot\n"
-tezos-node snapshot import "$SNAPSHOT_PATH"
+/opt/tezos/tezos-node snapshot import "$SNAPSHOT_PATH"

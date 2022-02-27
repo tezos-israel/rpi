@@ -4,17 +4,19 @@ function get_protocol() {
     DATA_DIR=$1
     
     BINARIES_DIR="$DATA_DIR/binaries"
+    if [ ! -d "$BINARIES_DIR" ]; then
+        echo "Binaries directory not found: $BINARIES_DIR"
+        exit 1
+    fi
     
-    cd "$BINARIES_DIR" || exit 1
-    
-    bk_binaries=$(find . -type f -iname "tezos-baker-*" | sort)
+    bk_binaries=$(find "$BINARIES_DIR" -type f -iname "tezos-baker-*" | sort)
     
     if [ -z "$bk_binaries" ]; then
         echo "baking binary not found"
         exit 1
     fi
     
-    proto=$(echo "$bk_binaries" | sed -En "s/.\/tezos-baker-(.*)/\1/p" | tail -1)
+    proto=$(echo "$bk_binaries" | sed -En "s/.*\/tezos-baker-(.*)/\1/p" | tail -1)
     
     echo "$proto"
 }

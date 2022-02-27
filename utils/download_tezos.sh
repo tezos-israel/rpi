@@ -53,4 +53,6 @@ function download_tezos() {
     fi
 
     chmod +x ./*
+
+    cd "$OLDPWD" || exit 1
 }
