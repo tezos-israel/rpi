@@ -2,8 +2,10 @@
 set -euo pipefail
 IFS=$'\n\t'
 
+DEBUG=${DEBUG:-""}
+
 if [[ -n $DEBUG ]]; then
-  set -x
+    set -x
 fi
 
 SCRIPT_DIR=$(dirname "$0")
