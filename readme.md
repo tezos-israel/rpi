@@ -6,7 +6,7 @@
 
 ```
 wget "https://github.com/tezos-israel/rpi/releases/download/v0.0.1/tezos-rpi.img.tar.gz"
-tar -xzf ./tezos-rpi.img.tar.gz
+tar -xvf ./tezos-rpi.img.tar.gz
 ```
 
 - burn image to hdd (using imager)
