@@ -4,7 +4,13 @@
 
 - burn image to hdd (using imager)
 
-- run `wget -O - https://raw.githubusercontent.com/tezos-israel/rpi/main/setup-rpi-before-boot.sh | bash`
+- run
+
+```shell
+wget -O - https://raw.githubusercontent.com/tezos-israel/rpi/main/setup-rpi-before-boot.sh | WIFI_SSID=<WIFI_SSID> WIFI_PASSWORD=<WIFI_PASSWORD> bash
+```
+
+you can also supply SSH_PUB_KEY, COUNTRY_CODE if needed (more env vars are available in the script)
 
 - dismount hd
 
