@@ -2,6 +2,13 @@
 
 - enable boot from usb: https://www.tomshardware.com/how-to/boot-raspberry-pi-4-usb#how-to-boot-raspberry-pi-4-400-from-usb-xa0
 
+- download image using
+
+```
+wget "https://github.com/tezos-israel/rpi/releases/download/v0.0.1/tezos-rpi.img.tar.gz"
+tar -xzf ./tezos-rpi.img.tar.gz
+```
+
 - burn image to hdd (using imager)
 
 - run

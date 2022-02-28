@@ -6,7 +6,7 @@ function start_node() {
     sudo systemctl start tezos-node
     
     echo "sleeping until node is ready"
-    sleep 20
+    wait_until_is_active "tezos-node.service"
     
     /opt/tezos/tezos-client bootstrapped
 }
