@@ -10,16 +10,13 @@ fi
 
 DATA_DIR=${1:-$DATA_DIR}
 
-TESTNET_URL=https://hangzhounet.xtz-shots.io/rolling
-# MAINNET_URL=https://mainnet.xtz-shots.io/rolling
-
-SNAPSHOT_URL=$TESTNET_URL
+SNAPSHOT_URL=https://$NETWORK.xtz-shots.io/rolling
 
 SNAPSHOT_PATH="$DATA_DIR"/snapshot.rolling
 
 if [ ! -f "$SNAPSHOT_PATH" ] || [ "$(find "$SNAPSHOT_PATH" -mmin +60)" ] || [ "${FORCE_DOWNLOAD_SNAPSHOT+0}" == "1" ]; then
     printf "\ndownloading latest snapshot\n"
-    wget $SNAPSHOT_URL -O "$SNAPSHOT_PATH"
+    wget "$SNAPSHOT_URL" -O "$SNAPSHOT_PATH"
 fi
 
 printf "\nstopping node\n"
