@@ -9,7 +9,7 @@ wget "https://github.com/tezos-israel/rpi/releases/download/v0.0.1/tezos-rpi.img
 tar -xvf ./tezos-rpi.img.tar.gz
 ```
 
-- burn image to hdd (using imager)
+- burn image to hd (using imager)
 
 - run
 
@@ -38,4 +38,4 @@ cd ./setup-rpi
   - for testnet:
     - download config from faucet: https://teztnets.xyz/hangzhounet-faucet to a json file (name the file `PUBLIC_ADDRESS.json` - something like `tzXXX.json`)
     - run `./create_test_baker.sh tzXXXX`
-  - for mainnet: run `./import_ledger_baker.sh`
+  - for mainnet on a ledger: run `./import_ledger_baker.sh`
