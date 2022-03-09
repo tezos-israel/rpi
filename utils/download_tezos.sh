@@ -20,7 +20,6 @@ function download() {
     DATA_DIR="$1"
     arch_suffix="$2"
     version="$3"
-
     
     wget -O "$BINARIES_TAR" "https://github.com/$github_repo/releases/download/v$version/binaries-$version$arch_suffix.tar.gz"
 }

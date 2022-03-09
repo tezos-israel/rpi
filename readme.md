@@ -39,3 +39,9 @@ cd ./setup-rpi
     - download config from faucet: https://teztnets.xyz/hangzhounet-faucet to a json file (name the file `PUBLIC_ADDRESS.json` - something like `tzXXX.json`)
     - run `./create_test_baker.sh tzXXXX`
   - for mainnet on a ledger: run `./import_ledger_baker.sh`
+
+## Update node
+
+just run `./update_node.sh` and it will download the latest binaries and run them
+
+you can pass parameter `version` to specify the version you want to download
