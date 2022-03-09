@@ -46,10 +46,10 @@ num_step start_node
 
 
 echo "Please import your baker"
-echo "To import a ledger baker, run ./import_ledger_baker.sh"
-echo "To import a tesnet baker, run ./create_test_baker.sh ADDRESS"
+echo "To import a ledger baker, run ./baker-account/import_ledger_baker.sh"
+echo "To import a tesnet baker, run ./baker-account/create_test_baker.sh ADDRESS"
 
-echo "press [Enter] to continue..."
+echo "once baker is imported, press [Enter] to continue..."
 read -r
 
 num_step register_baker
