@@ -30,18 +30,24 @@ you can also supply SSH_PUB_KEY, COUNTRY_CODE if needed (more env vars are avail
 
 ```
 cd ./setup-rpi
-./on-first-boot.sh
+./install.sh
 ```
 
 - to import baker address:
 
   - for testnet:
     - download config from faucet: https://teztnets.xyz/hangzhounet-faucet to a json file (name the file `PUBLIC_ADDRESS.json` - something like `tzXXX.json`)
-    - run `./create_test_baker.sh tzXXXX`
-  - for mainnet on a ledger: run `./import_ledger_baker.sh`
+    - run `./baker-account/create_test_baker.sh tzXXXX`
+  - for mainnet on a ledger: run `./baker-account/import_ledger_baker.sh`
 
 ## Update node
 
 just run `./update_node.sh` and it will download the latest binaries and run them
 
 you can pass parameter `version` to specify the version you want to download
+
+## Update to a new protocol
+
+before a new protocol starts, you should already run the protocol binaries so your bakery will be ready. until it starts you need to also run the current protocol binaries.
+
+to update to the new protocol, run `./update/update_protocol.sh $proto`, where $proto is built from the version number of the protocol and part of the protocol hash.
