@@ -8,22 +8,18 @@ function get_protocol() {
     if [ "$NETWORK" == "mainnet" ]; then
         TZKT_API=$MAINNET_TZKT_API
     fi
+    protocol_json=$(curl -s "$TZKT_API"v1/protocols/current)
     
-    curl -s "$TZKT_API"v1/protocols/current | jq .hash | cut -c 2-9  -
+    hash=$(echo "$protocol_json" | jq -r '.hash' | cut -c 1-8)
+    code=$(echo "$protocol_json" | jq -r '.code' | xargs printf "%03d")
+    echo "$code"-"$hash"
 }
 
 
 function create_service_files(){
-    DATA_DIR=$1
-    user=$2
-    baker=$3
-    
-    proto=$(get_protocol "$DATA_DIR")
-    
-    if [ -z "$proto" ]; then
-        echo "protocol is missing"
-        exit 1
-    fi
+    user=$1
+    baker=$2
+    proto=$3
     
     SERVICES_DIR="$DATA_DIR/services"
     TEMPLATES_DIR="$SCRIPT_DIR"/services
@@ -39,9 +35,27 @@ function create_service_files(){
 }
 
 
+function check_binaries() {
+    proto=$1
+    
+    if [ ! -f /opt/tezos/tezos-baker-"$proto" ]; then
+        echo "tezos-baker-$proto not found"
+        exit 1
+    fi
+}
+
 function create_tezos_services() {
+    proto=${1:-$(get_protocol "$DATA_DIR")}
+    
+    if [ -z "$proto" ]; then
+        echo "protocol is missing"
+        exit 1
+    fi
+    
+    check_binaries "$proto"
+    
     echo "creating files"
-    create_service_files "$DATA_DIR" "$user" "$baker"
+    create_service_files "$user" "$baker" "$proto"
     
     echo "moving files to system"
     # move services to system dir
