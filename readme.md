@@ -51,3 +51,20 @@ you can pass parameter `version` to specify the version you want to download
 before a new protocol starts, you should already run the protocol binaries so your bakery will be ready. until it starts you need to also run the current protocol binaries.
 
 to update to the new protocol, run `./update/update_protocol.sh $proto`, where $proto is built from the version number of the protocol and part of the protocol hash.
+
+### Run Current protocol
+
+When updating to a new protocol, you need to run the current protocol binaries in parallel. so we run the next protocol as a service and the current protocol in our shell. you need to run the following commands:
+
+```sh
+tezos-baker-$proto run with local node /home/$USER/.tezos-node $BAKER_ALIAS
+tezos-accuser-$proto run
+tezos-endorser-$proto run # will be removed in itacha
+```
+
+where:
+
+- $BAKER_ALIAS is the alias of the baker account you want to use.
+- $proto is the current protocol.
+
+you can also run `./update/run_proto.sh $proto` to run a tmux session of the current protocol.
