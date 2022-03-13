@@ -3,7 +3,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-if ! [  -x "$(command -v "tezos-node")" ] ; then
+if ! [  -f /opt/tezos/tezos-node ] ; then
     echo "tezos-node was not found"
     exit 1
 fi
