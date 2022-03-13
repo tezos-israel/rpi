@@ -7,6 +7,7 @@ function start_node() {
     
     echo "sleeping until node is ready"
     wait_until_is_active "tezos-node.service"
+    sleep 20
     
     /opt/tezos/tezos-client bootstrapped
 }
