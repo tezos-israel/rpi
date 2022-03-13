@@ -57,12 +57,4 @@ num_step register_baker
 num_step start_baker_binaries
 
 
-## ledger specifc
-# apply_udev "$DATA_DIR"
-
-# echo "Please connect ledger and open the baking app, press [Enter] to continue..."
-# read -r
-
-# import_baker
-
 
