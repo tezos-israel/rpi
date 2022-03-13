@@ -9,16 +9,16 @@ fi
 
 DEFAULT_NETWORK=hangzhounet
 
-if [[ -z ${user+x} ]]; then
+if [[ -z ${BAKING_USER+x} ]]; then
     echo "What's is the user name that runs tezos (default: $USER)?"
-    read -r user
-    user=${user:-$USER}
+    read -r BAKING_USER
+    BAKING_USER=${BAKING_USER:-$USER}
 fi
 
-if [[ -z ${baker+x} ]]; then
+if [[ -z ${BAKER+x} ]]; then
     echo "What's is your baker alias (default: baker)?"
-    read -r baker
-    baker=${baker:-"baker"}
+    read -r BAKER
+    BAKER=${BAKER:-"baker"}
 fi
 
 if [[ -z ${NETWORK+x} ]]; then
@@ -28,7 +28,7 @@ if [[ -z ${NETWORK+x} ]]; then
 fi
 
 cat > "$details_file" << EOF
-baker=$baker
-user=$user
+BAKER=$BAKER
+BAKING_USER=$BAKING_USER
 NETWORK=$NETWORK
 EOF

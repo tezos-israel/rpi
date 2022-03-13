@@ -14,7 +14,7 @@ session="tezos-$proto"
 
 tmux new-session -d -s "$session"
 
-tmux send-key "tezos-baker-$proto run with local node /home/$USER/.tezos-node $baker" C-m
+tmux send-key "tezos-baker-$proto run with local node /home/$USER/.tezos-node $BAKER" C-m
 tmux split-window -h
 
 tmux send-key "tezos-accuser-$proto run" C-m

@@ -13,7 +13,7 @@ DATA_DIR=./out
 function add_user_to_root() {
     echo "adding user to root"
     
-    sudo adduser "$user" root
+    sudo adduser "$BAKING_USER" root
 }
 
 
@@ -45,12 +45,12 @@ function import_baker() {
         exit 1
     fi
     
-    /opt/tezos/tezos-client import secret key "$baker" "$ledger_uri"
+    /opt/tezos/tezos-client import secret key "$BAKER" "$ledger_uri"
 }
 
 function setup_ledger_to_baker() {
     echo "approve ledger for baking:"
-    /opt/tezos/tezos-client setup ledger to bake for "$baker"
+    /opt/tezos/tezos-client setup ledger to bake for "$BAKER"
 }
 
 step apply_udev "udev"

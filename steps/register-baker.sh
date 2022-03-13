@@ -6,6 +6,6 @@ function register_baker() {
     register=${register:-"N"}
     
     if [ "$register" = "y" ] || [ "$register" = "Y" ]; then
-        /opt/tezos/tezos-client register key "$baker" as delegate
+        /opt/tezos/tezos-client register key "$BAKER" as delegate
     fi
 }

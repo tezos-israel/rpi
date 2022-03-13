@@ -17,8 +17,6 @@ function get_protocol() {
 
 
 function create_service_files(){
-    user=$1
-    baker=$2
     proto=$3
     
     SERVICES_DIR="$DATA_DIR/services"
@@ -30,7 +28,7 @@ function create_service_files(){
     
     for f in $services_templates
     do
-        sed "s/\$USER/$user/g" "$TEMPLATES_DIR/$f" | sed "s/\$BAKER_ALIAS/$baker/g" | sed "s/\$PROTO/$proto/g" > "$SERVICES_DIR/${f/\.template/""}"
+        sed "s/\$USER/$BAKING_USER/g" "$TEMPLATES_DIR/$f" | sed "s/\$BAKER_ALIAS/$BAKER/g" | sed "s/\$PROTO/$proto/g" > "$SERVICES_DIR/${f/\.template/""}"
     done
 }
 
@@ -55,7 +53,7 @@ function create_tezos_services() {
     check_binaries "$proto"
     
     echo "creating files"
-    create_service_files "$user" "$baker" "$proto"
+    create_service_files "$proto"
     
     echo "moving files to system"
     # move services to system dir
