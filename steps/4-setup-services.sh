@@ -17,7 +17,7 @@ function get_protocol() {
 
 
 function create_service_files(){
-    proto=$3
+    proto=$1
     
     SERVICES_DIR="$DATA_DIR/services"
     TEMPLATES_DIR="$SCRIPT_DIR"/services
